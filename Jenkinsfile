@@ -50,7 +50,7 @@ pipeline {
         stage('Archive') {
            when {
 		expression {
-                    param.RELEASE_TYPE == 'RELEASE'
+                    params.RELEASE_TYPE == 'RELEASE'
                 }
 	   }
             steps {
