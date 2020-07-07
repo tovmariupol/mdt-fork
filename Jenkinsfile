@@ -48,7 +48,9 @@ pipeline {
 
         stage('Archive') {
            when {
-		branch 'master'
+		expression {
+                    param.RELEASE_TYPE == 'RELEASE'
+                }
 	   }
             steps {
                 archiveArtifacts '*.tgz'
