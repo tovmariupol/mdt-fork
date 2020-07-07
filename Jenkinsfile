@@ -24,17 +24,20 @@ pipeline {
                 git "https://github.com/tovmariupol/mdt-fork"
             }
         }
-        stage("Build_CSS") {
-            steps {
-                sh """cd ${WORKSPACE}/www/css
-                  cleancss -d style.css > ../min/custom-min.css"""
-            }
-        }
-        stage("Build_JS") {
-            steps {
-                sh """cd ${WORKSPACE}/www/js
-                  uglifyjs --timings init.js -o ../min/custom-min.js"""
-            }
+        stage("Build') {
+            parallel {
+                stage("Build_CSS") {
+                    steps {
+                         sh """cd ${WORKSPACE}/www/css
+                         cleancss -d style.css > ../min/custom-min.css"""
+                    }
+                }  
+                stage("Build_JS") {
+                    steps {
+                         sh """cd ${WORKSPACE}/www/js
+                         uglifyjs --timings init.js -o ../min/custom-min.js"""
+                    }
+                }
         }
         stage("Package_artifact") {
             steps {
