@@ -13,7 +13,7 @@ pipeline {
         
         string (
             name: 'RELEASE_VER', 
-            defaultValue: '0.1.1', 
+            defaultValue: '0.1.2', 
             description: 'Release version (number value, format x.x.x)', 
             trim: false)
     }
