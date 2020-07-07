@@ -24,7 +24,7 @@ pipeline {
                 git "https://github.com/tovmariupol/mdt-fork"
             }
         }
-        stage("Build') {
+        stage('Build') {
             parallel {
                 stage("Build_CSS") {
                     steps {
@@ -38,6 +38,7 @@ pipeline {
                          uglifyjs --timings init.js -o ../min/custom-min.js"""
                     }
                 }
+            }
         }
         stage("Package_artifact") {
             steps {
